@@ -29,13 +29,12 @@ if (isset($_SESSION['username'])) { header('Location: about.php'); exit(); };
 						<li><a href="ChatRoom.php">Find a Last</a></li>
 						<li><a href="elements.html">Elements</a></li>
 						<?php 
-						session_start();
 						if (isset($_SESSION['username'])) {
 						echo "<li><a href='profile.php'>Profile</a></li>";
 						echo "<li><a href='LogOut.php' class='button special'>Log Out</a></li>";
 						} else {
 						echo "<li><a href='index.php' class='button special'>Log In</a></li>";
-						}; ?>
+						} ?>
 					</ul>
 				</nav>
 			</header>
@@ -69,4 +68,3 @@ if (isset($_SESSION['username'])) { header('Location: about.php'); exit(); };
 	
   </body>
 </html>
-

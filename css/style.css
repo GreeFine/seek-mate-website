@@ -1015,6 +1015,9 @@
 						top: -0.075em;
 						vertical-align: middle;
 					}
+						#header nav > ul > li .button:hover {
+							background-color: blue;
+						}
 
 		#header .container {
 			position: relative;

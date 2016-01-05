@@ -77,6 +77,71 @@ $(".previous").click(function(){
 	});
 });
 
-$(".submit").click(function(){
-	return false;
-})
+$("#email").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$("#username").on("change keyup paste", function(){
+    
+});
+
+$(".send").click(function(){
+	
+	$.post('/RegisterProcess.php', { 
+	username: document.getElementById("username")[0].value,
+	email: document.getElementById("email")[0].value,
+	password: document.getElementById("password")[0].value,
+	steam: document.getElementById("steam")[0].value,
+	rank: document.getElementById("rank")[0].value,
+	team: document.getElementById("team")[0].value, 
+	fname: document.getElementById("fname")[0].value,
+	lname: document.getElementById("lname")[0].value,
+	commentary: document.getElementById("commentary")[0].value
+	},	function(data){
+			alert(data);
+		});
+});

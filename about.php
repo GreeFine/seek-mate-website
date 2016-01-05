@@ -98,7 +98,7 @@
 					</header>
 					<section class="profiles">
 						<div class="row">
-							<section class="3u 6u(medium) 12u$(xsmall) profile"> </section>
+							
 							<section class="4u 6u(medium) 12u$(xsmall) profile">
 								<img src="images/GreeFine.gif" alt="" />
 								<h4>Raphaël / GreeFine</h4>
@@ -110,7 +110,12 @@
 							<section class="4u 6u$(medium) 12u$(xsmall) profile">
 								<img src="images/Findl.png" alt="" />
 								<h4>Findl Alexandre</h4>
-								<p>Founder / Dev</p>
+								<p>Administrator / Dev</p>
+							</section>
+							<section class="4u 6u$(medium) 12u$(xsmall) profile">
+								<img src="images/Vicent.jpg" alt="" />
+								<h4>Vicent Edenk</h4>
+								<p>Corrector / Batman</p>
 							</section>
 						</div>
 					</section>

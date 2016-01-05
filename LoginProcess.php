@@ -1,16 +1,15 @@
 <?php
-
-	$dbCon = mysqli_connect("localhost", "root", "", "users");
+	session_start();
+	$dbCon = mysqli_connect("localhost", "root", "", "Seek-Mate");
 	if (mysqli_connect_errno()) {
 		echo "DB Co Failed";
 	}
-
-	session_start();
+	
 	if (isset($_POST["username"], $_POST["password"]))
 	{
 		$username = $_POST["username"];
 		$Sha1Pass = sha1($_POST['password']);
-		$sql = "SELECT id, username FROM credential WHERE username = '$username' AND password = '$Sha1Pass' LIMIT 1";
+		$sql = "SELECT id, username FROM users WHERE username = '$username' AND password = '$Sha1Pass' LIMIT 1";
 		$query = mysqli_query($dbCon, $sql);
 	
 		if ($query) {
@@ -19,7 +18,7 @@
 			$DbUsername = $row[1];
 		}
 		
-		if ($DbUserId > 0) {
+		if (!empty($DbUserId)) {
 			$_SESSION['username'] = $DbUsername;
 			$_SESSION['id'] = $DbUserId;
 			echo 1;

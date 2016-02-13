@@ -32,7 +32,6 @@
 					<ul>
 						<li><a href="about.php">About</a></li>
 						<li><a href="ChatRoom.php">Find a Last</a></li>
-						<li><a href="elements.html">Elements</a></li>
 						<?php 
 						session_start();
 						if (isset($_SESSION['username'])) {
@@ -103,14 +102,9 @@
 								<img src="images/GreeFine.gif" alt="" />
 								<h4>Raphaël / GreeFine</h4>
 								<p>
-								Founder / Dev</br>
+								Founder / Dev<br />
 								<a href="mailto:GreeFine@hotmail.fr">GreeFine@hotmail.fr</a>
 								</p>
-							</section>
-							<section class="4u 6u$(medium) 12u$(xsmall) profile">
-								<img src="images/Findl.png" alt="" />
-								<h4>Findl Alexandre</h4>
-								<p>Administrator / Dev</p>
 							</section>
 							<section class="4u 6u$(medium) 12u$(xsmall) profile">
 								<img src="images/Vicent.jpg" alt="" />
@@ -120,14 +114,12 @@
 						</div>
 					</section>
 						<p>To make this site life and to help it your can now suport by making a donation or susribing to the premium</p>
-						<ul class="actions">
 							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 							<input type="hidden" name="cmd" value="_s-xclick">
 							<input type="hidden" name="hosted_button_id" value="69EKU4X5NP5NY">
-							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-							<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+							<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!">
+							<img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 							</form>
-						</ul>
 				</div>
 			</section>
 

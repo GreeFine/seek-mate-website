@@ -21,12 +21,11 @@ if (isset($_SESSION['username'])) { header('Location: about.php'); exit(); };
   
 	<body>
 		<header id="header">
-			<h1><a href="index.html">Seek-Mate</a></h1>
+			<h1><a href="index.php">Seek-Mate</a></h1>
 				<nav id="nav">
 					<ul>
 						<li><a href="about.php">About</a></li>
 						<li><a href="ChatRoom.php">Find a Last</a></li>
-						<li><a href="elements.html">Elements</a></li>
 						<?php 
 						if (isset($_SESSION['username'])) {
 						echo "<li><a href='profile.php'>Profile</a></li>";
@@ -46,15 +45,15 @@ if (isset($_SESSION['username'])) { header('Location: about.php'); exit(); };
 			<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
             <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
             </svg>
-            <input type="text" class="login__input name" name="L_username" placeholder="Username"/>
+            <input type="text" class="login__input name" id="username" placeholder="Username"/>
 			</div>
 			<div class="login__row">
             <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
             <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
             </svg>
-            <input type="password" class="login__input pass" name="L_password" placeholder="¨Password"/>
+            <input type="password" class="login__input pass" id="password" placeholder="Password"/>
 			</div>
-			<button type="button" class="login__submit">Sign in</button>
+			<button type="button" id="submitBtn" class="login__submit">Sign in</button>
 			<p class="login__signup">Don't have an account? &nbsp;<a href="Register.php">Register</a></p>
       </div>
     </div>

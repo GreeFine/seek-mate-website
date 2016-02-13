@@ -51,6 +51,13 @@ body {
 	color: #2C3E50;
 	font-size: 13px;
 }
+	#msform input.Error {
+		color: red;
+	}
+	
+	#msform input.NextError {
+		background: red;
+	}
 /*select*/
 #msform select {
 	padding: 10px;
@@ -314,6 +321,13 @@ body {
 		input[type="button"].big,
 		.button.big {
 			font-size: 1.35em;
+		}
+		
+		input[type="submit"].big,
+		input[type="reset"].big,
+		input[type="button"].big,
+		.button.hidden {
+			display: none;
 		}
 
 		input[type="submit"].alt,

@@ -7,7 +7,7 @@ var animating; //flag to prevent quick multi-click glitches
 $(".next").click(function(){
 	if(animating) return false;
 	animating = true;
-	
+	if (CheckEror(this.id)) return false;
 	current_fs = $(this).parent();
 	next_fs = $(this).parent().next();
 	
@@ -77,71 +77,171 @@ $(".previous").click(function(){
 	});
 });
 
-$("#email").on("change keyup paste", function(){
-    
-});
+function CheckEntry(id)
+{
+	switch (id) {
+		case "email":
+			var input = document.getElementById(id);
+			var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			if (re.test(input.value)) {
+				$(input).removeClass("Error");
+			} else {
+				$(input).addClass("Error");
+			}
+			break;
+		case "username":
+			var input = document.getElementById(id);
+			if (input.value.length > 3 && input.value.length < 25) {
+				$(input).removeClass("Error");
+			} else {
+				$(input).addClass("Error");
+			}
+			break;
+		case "password":
+			var input = document.getElementById(id);
+			if (input.value.length > 4 && input.value.length < 25) {
+				$(input).removeClass("Error");
+			} else {
+				$(input).addClass("Error");
+			}
+			break;
+		case "cpassword":
+			var input = document.getElementById(id);
+			if (input.value == document.getElementById("password").value) {
+				$(input).removeClass("Error");
+			} else {
+				$(input).addClass("Error");
+			}
+			break;
+			
+		/*Page 2*/
+		case "steam":
+			var input = document.getElementById(id);
+			var re = /^http:\/\/steamcommunity.com\/(id\/|profiles\/[0-9]{17})/;
+			if (re.test(input.value)) {
+				$(input).removeClass("Error");
+			} else {
+				$(input).addClass("Error");
+			}
+			break;
+		default:
+			alert(1);
+	}
+}
 
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
-
-$("#username").on("change keyup paste", function(){
-    
-});
+function CheckEror(nextId) {
+	var result = false;
+	if (nextId == "next1")
+	{
+		var input = document.getElementById("email");
+		var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		if (re.test(input.value)) {
+			$(input).removeClass("Error");
+		} else {
+			$(input).addClass("Error");
+			result = true;
+		}
+		
+		var input = document.getElementById("username");
+		if (input.value.length > 3 && input.value.length < 25) {
+			$(input).removeClass("Error");
+		} else {
+			$(input).addClass("Error");
+			result = true;
+		}
+		
+		var input = document.getElementById("password");
+		if (input.value.length > 4 && input.value.length < 25) {
+			$(input).removeClass("Error");
+		} else {
+			$(input).addClass("Error");
+			result = true;
+		}
+		
+		var input = document.getElementById("cpassword");
+		if (input.value == document.getElementById("password").value) {
+			$(input).removeClass("Error");
+		} else {
+			$(input).addClass("Error");
+			result = true;
+		}
+		
+	} else if (nextId == "next2") {
+		var input = document.getElementById("steam");
+		var re = /^http:\/\/steamcommunity.com\/(id\/|profiles\/[0-9]{17})/;
+		if (re.test(input.value)) {
+			$(input).removeClass("Error");
+		} else {
+			$(input).addClass("Error");
+			result = true;
+		}
+	}
+	
+	if (result == true)
+	{
+		var input = document.getElementById(nextId);
+		$(input).addClass("NextError");
+		input.value = "Error !";
+		setTimeout(function() {
+			animating = false;
+			$(input).removeClass("NextError");
+			input.value = "Next";
+		}, 3000);
+	}
+	return result;
+}
 
 $(".send").click(function(){
-	
 	$.post('/RegisterProcess.php', { 
-	username: document.getElementById("username")[0].value,
-	email: document.getElementById("email")[0].value,
-	password: document.getElementById("password")[0].value,
-	steam: document.getElementById("steam")[0].value,
-	rank: document.getElementById("rank")[0].value,
-	team: document.getElementById("team")[0].value, 
-	fname: document.getElementById("fname")[0].value,
-	lname: document.getElementById("lname")[0].value,
-	commentary: document.getElementById("commentary")[0].value
+	username: document.getElementById("username").value,
+	email: document.getElementById("email").value,
+	password: document.getElementById("password").value,
+	steam: document.getElementById("steam").value,
+	rank: document.getElementById("rank").value,
+	team: document.getElementById("team").value, 
+	fname: document.getElementById("fname").value,
+	lname: document.getElementById("lname").value,
+	commentary: document.getElementById("commentary").value
 	},	function(data){
-			alert(data);
+			switch (data)
+			{
+				case '1':
+					SendAnimation("Successfully registered","green");
+					break;
+				case '2':
+					SendAnimation("Error Retry later","red");
+					break;
+				case '3':
+					SendAnimation("Error in inputs retry","red");
+					break;
+				case '4':
+					SendAnimation("Email already used !","orange");
+					setTimeout(function() {
+						ReloadForm();
+					}, 4000);
+					break;
+				case '5':
+					SendAnimation("Username already used !","orange");
+					setTimeout(function() {
+						ReloadForm();
+					}, 4000);
+					break;
+				default:
+					SendAnimation("Unexpected","red");
+					break;
+			};
 		});
 });
+
+function SendAnimation(TDisplay,colorC) {
+	document.getElementById("msform").style.display="none";
+	var DisplayB = document.getElementById("DisplayBox");
+	DisplayB.style.display="block";
+	DisplayB.innerHTML = TDisplay;
+	DisplayB.style.backgroundColor=colorC;
+};
+
+function ReloadForm() {
+	document.getElementById("DisplayBox").style.display="none";
+	document.getElementById("msform").style.display="block";
+}
